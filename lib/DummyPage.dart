@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DummyPage extends StatefulWidget {
   const DummyPage({Key? key}) : super(key: key);
@@ -9,10 +10,22 @@ class DummyPage extends StatefulWidget {
 }
 
 class _DummyPageState extends State<DummyPage> {
+
+  void deReg() async{
+
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    sh.remove('id');
+    sh.remove('password');
+    AlertDialog(content: Text('removed'),);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: Text('OK'),),
+    return Column(children: [
+      Center(child: Text('OK'),),
+      Center(child: ElevatedButton(onPressed: deReg, child: Icon(Icons.remove),)),
+    ],
+
     );
   }
 }
