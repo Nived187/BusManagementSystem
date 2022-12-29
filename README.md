@@ -1,4 +1,4 @@
-# flutproj
+# Bus Management System
 
 A new Flutter project.
 
